@@ -17,12 +17,13 @@ const Header = () => {
                     <button></button>
                 </div>
                 <div className="acoes">
-                    <Link to="/cadastro" className="underlined">Cadastre-se</Link>
-                    <Link to="/login" className="btn">Entrar</Link>
+                    {/* <Link to="/cadastro" className="underlined">Cadastre-se</Link>
+                    <Link to="/login" className="btn">Entrar</Link> */}
                     <div className="carrinho">
                         <img src={cart} />
                         <span>2</span>
                     </div>
+                    <h3>Olá Francisco</h3>
                 </div>
                 <nav>
                     <ul>
