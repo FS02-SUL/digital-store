@@ -206,6 +206,23 @@ header nav a.active{
     border-bottom: 3px solid var(--pink);
 }
 
+header .acoes h3{
+    font-size: 16px;
+    text-align: right;
+}
+
+header .acoes h3 span{
+    display: block;
+    font-size: 14px;
+    color: #777777;
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+
+header .acoes h3 span:hover{
+    color: var(--pink);
+}
+
 @media only screen and ( max-width: 480px ) {
 
     header{
@@ -231,4 +248,5 @@ header nav a.active{
     header .acoes a{
         display: none;
     }
+
 }
