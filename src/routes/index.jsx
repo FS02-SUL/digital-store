@@ -6,6 +6,8 @@ import MeusPedidosPage from '../pages/publicPages/MeusPedidosPage';
 import PageLayout from '../layouts/PageLayout';
 import NotFoundPage from '../pages/publicPages/NotFoundPage';
 import ProdutoSelecionado from '../pages/publicPages/ProdutosPage/ProdutoSelecionado';
+import AuthLayout from '../layouts/AuthLayout';
+import LoginPage from '../pages/authPages/LoginPage';
 
 const Ways = () => {
     return(
@@ -19,6 +21,11 @@ const Ways = () => {
                         <Route path='/categorias' element={<CategoriasPage />} />
                         <Route path='/meus-pedidos' element={<MeusPedidosPage />} />
                     </Route>
+
+                    <Route path='/auth' element={<AuthLayout />}>
+                        <Route index element={<LoginPage />} />
+                    </Route>
+
                     <Route path='*' element={<NotFoundPage/>} />
                 </Routes>
             </BrowserRouter>
