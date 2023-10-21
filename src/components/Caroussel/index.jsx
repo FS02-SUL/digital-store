@@ -3,13 +3,18 @@ import styled from "styled-components";
 import tenis1 from './assets/Tenis1.png';
 import tenis2 from './assets/Tenis2.png';
 import tenis3 from './assets/Tenis3.png';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useProducts } from "../../hooks/useProduct";
 
 const Caroussel = () => {
 
     const [itemAtivo, setItemAtivo] = useState(0);
     const [banners, setBanners] = useState([]);
+    const [produtos, setProdutos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const { data: productsData } = useProducts();
+    setProdutos(productsData);
 
     const alteraIMG = (imagem) => {
         switch(imagem){
@@ -24,22 +29,37 @@ const Caroussel = () => {
         }
     }
 
-    function buscarBanners(){
-        fetch('http://localhost:3000/banners')
-        .then(response => response.json())
-        .then(data => {
+    async function buscarBanners(){
+        // fetch('http://localhost:3000/banners')
+        // .then(response => response.json())
+        // .then(data => {
+        //     setBanners(data);
+        // })
+        // .catch(e => {
+        //     console.log(e.message);
+        // })
+        // .finally(() => {
+        //     setIsLoading(false);
+        // })
+        try {
+            const response = await fetch('http://localhost:3000/banners');
+            const data = await response.json();
             setBanners(data);
-        })
-        .catch(e => {
-            console.log(e.message);
-        })
-        .finally(() => {
             setIsLoading(false);
-        })
+        } catch (error) {
+            switch(error.message){
+                case 'Failed to fetch': 
+                    return alert('Erro: Não conectou no servidor');
+                default: 
+                    return alert('Falha em carregar banners, avise o suporte');
+            }
+        }
     }
+
 
     useEffect(() => {
         buscarBanners();
+        console.log(produtos);
     }, []);
 
     return (
