@@ -6,7 +6,7 @@ const App = () => {
 
   const [userInfo, setUserInfo] = useState({
     name: 'Chico',
-    isLogged: true
+    isLogged: false
   });
   
 

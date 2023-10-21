@@ -3,101 +3,90 @@ import styled from "styled-components";
 import tenis1 from './assets/Tenis1.png';
 import tenis2 from './assets/Tenis2.png';
 import tenis3 from './assets/Tenis3.png';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Caroussel = () => {
 
     const [itemAtivo, setItemAtivo] = useState(0);
+    const [banners, setBanners] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const banners = [
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'Queima de estoque Nike',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis1
-        },
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'Leve o seu agora',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis2
-        },
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'O mais melhor de todos',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis3
-        },
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'O mais melhor de todos',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis3
-        },
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'O mais melhor de todos',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis3
-        },
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'O mais melhor de todos',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis3
-        },
-        {
-            suptitle: 'Melhores ofertas personalizadas',
-            title: 'O mais melhor de todos',
-            description: 'Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.',
-            buttonText: 'Ver Ofertas',
-            imagem: tenis3
-        },
-    ];
+    const alteraIMG = (imagem) => {
+        switch(imagem){
+            case "tenis1":
+                return tenis1
+            case "tenis2":
+                return tenis2
+            case "tenis3":
+                return tenis3
+            default:
+                return tenis3
+        }
+    }
+
+    function buscarBanners(){
+        fetch('http://localhost:3000/banners')
+        .then(response => response.json())
+        .then(data => {
+            setBanners(data);
+        })
+        .catch(e => {
+            console.log(e.message);
+        })
+        .finally(() => {
+            setIsLoading(false);
+        })
+    }
+
+    useEffect(() => {
+        buscarBanners();
+    }, []);
 
     return (
         <>
             <CarousselContainer>
-                <CarousselItems $ativo={itemAtivo} $items={banners.length}>
-                    {
-                        banners.map((banner, index) => (
-                            <CarousselItem key={index}>
-                                <CarousselContent>
-                                    <CarousselSupTitle>
-                                        {banner.suptitle}
-                                    </CarousselSupTitle>
-                                    <CarousselTitle>
-                                        {banner.title}
-                                    </CarousselTitle>
-                                    <CarousselDescription>
-                                        {banner.description}
-                                    </CarousselDescription>
-                                    <CarousselButton>
-                                        {banner.buttonText}
-                                    </CarousselButton>
-                                </CarousselContent>
-                                <CarousselImage src={banner.imagem} />
-                            </CarousselItem>
-                        ))
-                    }
-                </CarousselItems>
-                <CarousselPagination>
-                    {
-                        banners.map((banner, index) => (
-                            <CarousselPaginationPill
-                                key={index}
-                                className={ itemAtivo === index ? "active" : ""}
-                                onClick={() => setItemAtivo(index)}
-                            />
-                        ))
-                    }
-                </CarousselPagination>
+                {
+                    isLoading ? (
+                        <div>Carregando...</div>
+                    ) : (
+                        <>
+                            <CarousselItems $ativo={itemAtivo} $items={banners.length}>
+                                {
+                                    banners.map((banner, index) => (
+                                        <CarousselItem key={index}>
+                                            <CarousselContent>
+                                                <CarousselSupTitle>
+                                                    {banner.suptitle}
+                                                </CarousselSupTitle>
+                                                <CarousselTitle>
+                                                    {banner.title}
+                                                </CarousselTitle>
+                                                <CarousselDescription>
+                                                    {banner.description}
+                                                </CarousselDescription>
+                                                <CarousselButton>
+                                                    {banner.buttonText}
+                                                </CarousselButton>
+                                            </CarousselContent>
+                                            <CarousselImage src={alteraIMG(banner.imagem)} />
+                                        </CarousselItem>
+                                    ))
+                                }
+                            </CarousselItems>
+                            <CarousselPagination>
+                                {
+                                    banners.map((banner, index) => (
+                                        <CarousselPaginationPill
+                                            key={index}
+                                            className={ itemAtivo === index ? "active" : ""}
+                                            onClick={() => setItemAtivo(index)}
+                                        />
+                                    ))
+                                }
+                            </CarousselPagination>
+                        </>
+                    )
+                }
             </CarousselContainer>
         </>
     );

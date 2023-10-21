@@ -1,0 +1,69 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Davi",
+            "email": "davi@email.com",
+            "password": "123456",
+            "keep_logged": false
+        }
+    ],
+    "banners": [
+        {
+            "id": 1,
+            "suptitle": "Melhores ofertas personalizadas",
+            "title": "Queima de estoque Nike",
+            "description": "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
+            "buttonText": "Ver Ofertas",
+            "imagem": "tenis1"
+        },
+        {
+            "id": 2,
+            "suptitle": "Melhores ofertas personalizadas",
+            "title": "Leve o seu agora",
+            "description": "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
+            "buttonText": "Ver Ofertas",
+            "imagem": "tenis2"
+        },
+        {
+            "id": 3,
+            "suptitle": "Melhores ofertas personalizadas",
+            "title": "O mais melhor de todos",
+            "description": "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
+            "buttonText": "Ver Ofertas",
+            "imagem": "tenis3"
+        },
+        {
+            "id": 4,
+            "suptitle": "Melhores ofertas personalizadas",
+            "title": "O mais melhor de todos",
+            "description": "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
+            "buttonText": "Ver Ofertas",
+            "imagem": "tenis3"
+        },
+        {
+            "id": 5,
+            "suptitle": "Melhores ofertas personalizadas",
+            "title": "O mais melhor de todos",
+            "description": "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
+            "buttonText": "Ver Ofertas",
+            "imagem": "tenis2"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Tênis Nike Revolution 6 Next Nature Masculino",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            "ref": "38416711",
+            "brand": "nike",
+            "type": "casual",
+            "rate": 4.7,
+            "price": "219.90",
+            "sizes": "[39,40,41,42,43]",
+            "colors": "['#6FEEFF', '#FF6969', '#5E5E5E', '#6D70B7']",
+            "reviews": 90
+        }
+    ],
+    "colections": []
+}
