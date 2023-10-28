@@ -8,8 +8,13 @@ import NotFoundPage from '../pages/publicPages/NotFoundPage';
 import ProdutoSelecionado from '../pages/publicPages/ProdutosPage/ProdutoSelecionado';
 import AuthLayout from '../layouts/AuthLayout';
 import LoginPage from '../pages/authPages/LoginPage';
+import AdminLayout from '../layouts/AdminLayout';
+import PageHome from '../pages/adminPages/PageHome';
+import PageUsers from '../pages/adminPages/PageUsers';
+import ProtectRoute from './ProtectRoute';
 
 const Ways = () => {
+    
     return(
         <>
             <BrowserRouter>
@@ -22,8 +27,18 @@ const Ways = () => {
                         <Route path='/meus-pedidos' element={<MeusPedidosPage />} />
                     </Route>
 
-                    <Route path='/auth' element={<AuthLayout />}>
+                    <Route path='/login' element={<AuthLayout />}>
                         <Route index element={<LoginPage />} />
+                    </Route>
+
+
+                    <Route path='/dashboard' element={
+                        <ProtectRoute>
+                            <AdminLayout />
+                        </ProtectRoute>
+                    }>
+                        <Route index element={<PageHome />} />
+                        <Route path='/dashboard/usuarios' element={<PageUsers />} />
                     </Route>
 
                     <Route path='*' element={<NotFoundPage/>} />

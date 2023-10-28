@@ -13,8 +13,8 @@ const Caroussel = () => {
     const [produtos, setProdutos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { data: productsData } = useProducts();
-    setProdutos(productsData);
+    // const { data: productsData } = useProducts();
+    // setProdutos(productsData);
 
     const alteraIMG = (imagem) => {
         switch(imagem){

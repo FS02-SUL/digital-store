@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import 'boxicons';
@@ -10,7 +10,7 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
     const { register: registerEdit, handleSubmit: handleSubmitEdit, setValue: setValueEdit, reset: resetEdit} = useForm();
-
+    const navigate = useNavigate();
 
     function login(data){
         // fetch('url',{
@@ -21,6 +21,15 @@ const LoginPage = () => {
         //     body: JSON.stringify(data)
         // })
         console.log(data);
+        if(data.level === 'admin'){
+            navigate('/dashboard');
+            return
+        }
+        if(data.level !== 'admin'){
+            navigate('/');
+            return
+        }
+
     }
 
     function setarDados(){
