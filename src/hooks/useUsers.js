@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "react-query"
 import { API, queryClient } from "../service";
 
 export const useUsers = () => {
-    return useQuery(['users'], async () => {
+    return useQuery(['get-users'], async () => {
         const response = await API.get('users');
         return response.data;
     });
@@ -13,7 +13,7 @@ export const useUserCreate = () => {
         return await API.post('users', data);
     }, {
         onSuccess: () => {
-            queryClient.invalidateQueries(['users']);
+            queryClient.invalidateQueries(['get-users']);
         }
     });
 };
@@ -23,7 +23,7 @@ export const useUserDelete = () => {
         return await API.delete(`users/${id}`);
     }, {
         onSuccess: () => {
-            queryClient.invalidateQueries(['users']);
+            queryClient.invalidateQueries(['get-users']);
         }
     });
 }

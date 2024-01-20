@@ -15,13 +15,8 @@ const PageUsers = () => {
     const { 
         register: createData, 
         handleSubmit: createSubmit, 
-        setValue: createValue, 
         reset: createReset 
-    } = useForm({
-        defaultValues: {
-            level: 1
-        }
-    });
+    } = useForm();
     const { 
         register: editData, 
         handleSubmit: editSubmit, 
@@ -118,7 +113,15 @@ const PageUsers = () => {
                         placeholder='Digite o email' 
                         {...createData('email', {required: true})}
                     />
-                    <label htmlFor="level" className='block mb-1'>Nível</label>
+                    <label htmlFor="password" className='block mb-1'>Senha</label>
+                    <InputText 
+                        id='password' 
+                        type='password' 
+                        className='w-full mb-3'
+                        placeholder='********'
+                        {...createData('password', {required: true})}
+                    />
+                    {/* <label htmlFor="level" className='block mb-1'>Nível</label>
                     <Dropdown 
                         value={levelSelected}
                         onChange={(e) => {
@@ -138,7 +141,7 @@ const PageUsers = () => {
                         ]}
                         optionLabel='level'
                         optionValue='value'
-                    />
+                    /> */}
                     <Button 
                         label='Salvar'
                         type='submit'

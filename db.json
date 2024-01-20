@@ -29,6 +29,18 @@
       "name": "teste",
       "email": "teste@gmailcom",
       "id": 8
+    },
+    {
+      "level": 1,
+      "name": "natasha",
+      "email": "nat@gmail.com",
+      "id": 9
+    },
+    {
+      "level": 1,
+      "name": "teste2",
+      "email": "teste2@gmail.com",
+      "id": 10
     }
   ],
   "banners": [
