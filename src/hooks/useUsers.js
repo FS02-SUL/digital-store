@@ -10,7 +10,8 @@ export const useUsers = () => {
 
 export const useUserCreate = () => {
     return useMutation(async (data) => {
-        return await API.post('users', data);
+        const response = await API.post('users', data);
+        return response.data;
     }, {
         onSuccess: () => {
             queryClient.invalidateQueries(['get-users']);
